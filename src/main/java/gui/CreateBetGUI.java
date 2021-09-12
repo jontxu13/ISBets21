@@ -40,7 +40,7 @@ public class CreateBetGUI extends JFrame {
 	private JScrollPane scrollPaneQueries = new JScrollPane();
 	private JScrollPane scrollPaneForecasts = new JScrollPane();
 
-	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
+	private ArrayList<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
 
 	private JTable tableEvents = new JTable();
 	private JTable tableQueries = new JTable();
@@ -164,7 +164,7 @@ public class CreateBetGUI extends JFrame {
 
 						BLFacade facade = LoginGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						ArrayList<domain.Event> events = facade.getEvents(firstDay);
 
 						if (events.isEmpty())
 							jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents") + ": "

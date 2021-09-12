@@ -7,6 +7,7 @@ import java.awt.Frame;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -44,16 +45,16 @@ public class AdministrationGUI extends JFrame {
 	private DefaultListModel modeloeventos = new DefaultListModel();
 	private JList listEventos;
 	private JButton mostrarEventos;
-	private Vector<Event> eventos = new Vector<Event>();
+	private ArrayList<Event> eventos = new ArrayList<Event>();
 	private static BLFacade facade = LoginGUI.getBusinessLogic();
 	private JButton mostrarPreguntas;
 	private DefaultListModel modelopreguntas = new DefaultListModel();
-	private Vector<Question> preguntas = new Vector<Question>();
+	private ArrayList<Question> preguntas = new ArrayList<Question>();
 	private DefaultListModel modeloPronosticos = new DefaultListModel();
 	private Event eventoSeleccionado;
 	private Question preguntaSeleccionada;
 	private DefaultListModel modelousuarios = new DefaultListModel();
-	private Vector<User> usuarios = new Vector<User>();
+	private ArrayList<User> usuarios = new ArrayList<User>();
 	private AdminUser userlog = null;
 	private JButton btnAtras;
 	
@@ -172,7 +173,7 @@ public class AdministrationGUI extends JFrame {
 			modelousuarios.addElement(e.toString());
 		}
 
-		Vector<User> usuarios = facade.getAllUsers();
+		ArrayList<User> usuarios = facade.getAllUsers();
 
 		for (User us : usuarios) {
 
@@ -259,7 +260,7 @@ public class AdministrationGUI extends JFrame {
 		
 		
 		
-		Vector<Question> preguntas = facade.getAllQuestions();
+		ArrayList<Question> preguntas = facade.getAllQuestions();
 		
 
 		for (Question q: preguntas) {

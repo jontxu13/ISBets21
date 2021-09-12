@@ -33,7 +33,7 @@ public class FindQuestionsGUI extends JFrame {
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 	private JScrollPane scrollPaneQueries = new JScrollPane();
 
-	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
+	private ArrayList<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
 
 	private JTable tableEvents = new JTable();
 	private JTable tableQueries = new JTable();
@@ -132,7 +132,7 @@ public class FindQuestionsGUI extends JFrame {
 						tableModelEvents.setColumnCount(3); // another column added to allocate ev objects
 
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						ArrayList<domain.Event> events = facade.getEvents(firstDay);
 
 						if (events.isEmpty())
 							jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents") + ": "
