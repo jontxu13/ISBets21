@@ -1,5 +1,6 @@
 package dataAccess;
 
+import java.util.ArrayList;
 //hello
 import java.util.Calendar;
 import java.util.Date;
@@ -37,6 +38,7 @@ import exceptions.UserDoesNotExistException;
 public class DataAccess {
 	protected static EntityManager db;
 	protected static EntityManagerFactory emf;
+	static String adm = "admin";
 
 	ConfigXML c = ConfigXML.getInstance();
 
@@ -97,7 +99,7 @@ public class DataAccess {
 			Event ev19 = new Event(19, "Real Sociedad-Levante", UtilDate.newDate(year, month + 1, 28));
 			Event ev20 = new Event(20, "Betis-Real Madrid", UtilDate.newDate(year, month + 1, 28));
 
-			User useradmin = new AdminUser("admin", "admin", "Pepe", "Lopez");
+			User useradmin = new AdminUser(adm, adm, "Pepe", "Lopez");
 			User usuario = new RegularUser("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 0);
 			db.persist(usuario);
 			db.persist(useradmin);
@@ -198,9 +200,9 @@ public class DataAccess {
 
 	}
 
-	public Vector<Question> getAllQuestions() {
+	public ArrayList<Question> getAllQuestions() {
 		System.out.println(">> DataAccess: getAllQuestions");
-		Vector<Question> res = new Vector<Question>();
+		ArrayList<Question> res = new ArrayList<Question>();
 		TypedQuery<Question> query = db.createQuery("SELECT qu FROM Question qu", Question.class);
 		List<Question> questions = query.getResultList();
 		for (Question qu : questions) {
@@ -216,9 +218,9 @@ public class DataAccess {
 	 * @param date in which events are retrieved
 	 * @return collection of events
 	 */
-	public Vector<Event> getEvents(Date date) {
+	public ArrayList<Event> getEvents(Date date) {
 		System.out.println(">> DataAccess: getEvents");
-		Vector<Event> res = new Vector<Event>();
+		ArrayList<Event> res = new ArrayList<Event>();
 		TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev WHERE ev.eventDate=?1", Event.class);
 		query.setParameter(1, date);
 		List<Event> events = query.getResultList();
@@ -229,9 +231,9 @@ public class DataAccess {
 		return res;
 	}
 
-	public Vector<Event> getAllEvents() {
+	public ArrayList<Event> getAllEvents() {
 		System.out.println(">> DataAccess: getAllEvents");
-		Vector<Event> res = new Vector<Event>();
+		ArrayList<Event> res = new ArrayList<Event>();
 		TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev", Event.class);
 		List<Event> events = query.getResultList();
 		for (Event ev : events) {
@@ -248,9 +250,9 @@ public class DataAccess {
 	 * @param date of the month for which days with events want to be retrieved
 	 * @return collection of dates
 	 */
-	public Vector<Date> getEventsMonth(Date date) {
+	public ArrayList<Date> getEventsMonth(Date date) {
 		System.out.println(">> DataAccess: getEventsMonth");
-		Vector<Date> res = new Vector<Date>();
+		ArrayList<Date> res = new ArrayList<Date>();
 
 		Date firstDayMonthDate = UtilDate.firstDayMonth(date);
 		Date lastDayMonthDate = UtilDate.lastDayMonth(date);
@@ -367,7 +369,7 @@ public class DataAccess {
 	public boolean existEvent(Event event) {
 		System.out.println(">> DataAccess: existEvent=> event= " + event);
 
-		Vector<Event> eventosmismodia = getEvents(event.getEventDate());
+		ArrayList<Event> eventosmismodia = getEvents(event.getEventDate());
 
 		for (Event e : eventosmismodia) {
 			if (e.getDescription().equals(event.getDescription())) {
@@ -432,9 +434,9 @@ public class DataAccess {
 		return query.getResultList().size();
 	}
 
-	public Vector<Forecast> getForecasts() {
+	public ArrayList<Forecast> getForecasts() {
 		db.getTransaction().begin();
-		Vector<Forecast> res = new Vector<Forecast>();
+		ArrayList<Forecast> res = new ArrayList<Forecast>();
 		TypedQuery<Forecast> query = db.createQuery("SELECT f FROM Forecast f ", Forecast.class);
 		List<Forecast> forecasts = query.getResultList();
 		for (Forecast f : forecasts) {
@@ -444,9 +446,9 @@ public class DataAccess {
 		return res;
 	}
 
-	public Vector<Forecast> getForecasts(Question pregunta) {
+	public ArrayList<Forecast> getForecasts(Question pregunta) {
 		db.getTransaction().begin();
-		Vector<Forecast> res = new Vector<Forecast>();
+		ArrayList<Forecast> res = new ArrayList<Forecast>();
 		TypedQuery<Forecast> query = db.createQuery("SELECT f FROM Forecast f WHERE f.getQuestion()=?1",
 				Forecast.class);
 		query.setParameter(1, pregunta);
@@ -499,9 +501,9 @@ public class DataAccess {
 		}
 	}
 
-	public Vector<User> getAllUsers() {
+	public ArrayList<User> getAllUsers() {
 
-		Vector<User> res = new Vector<User>();
+		ArrayList<User> res = new ArrayList<User>();
 		TypedQuery<User> query = db.createQuery("SELECT us FROM User us", User.class);
 		List<User> users = query.getResultList();
 		for (User us : users) {
@@ -514,7 +516,7 @@ public class DataAccess {
 
 	public Integer getMaxIdInDB() {
 
-		Vector<Event> events = getAllEvents();
+		ArrayList<Event> events = getAllEvents();
 
 		Integer maxid = events.get(0).getEventNumber();
 
@@ -796,7 +798,7 @@ public class DataAccess {
 		DataAccess data = new DataAccess();
 		RegularUser usuario = new RegularUser("usuario", "Usuario1?", "Nombre", "Apellido", "01/01/2000",
 				"usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 0);
-		AdminUser admin = new AdminUser("admin", "admin", "admin", "admin");
+		AdminUser admin = new AdminUser(adm, adm, adm, adm);
 		Event ev1 = new Event(69, "Eibar-Eibar", UtilDate.newDate(2025, 4, 17));
 		Question pregunta = new Question("pregunta", 2, ev1);
 		Forecast pronostico = new Forecast("Madrid", 17, pregunta);

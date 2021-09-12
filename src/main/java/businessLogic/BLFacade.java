@@ -1,5 +1,6 @@
 package businessLogic;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
@@ -10,7 +11,6 @@ import domain.AdminUser;
 import domain.Bet;
 import domain.Event;
 import domain.Forecast;
-//import domain.Booking;
 import domain.Question;
 import domain.RegularUser;
 import domain.User;
@@ -46,11 +46,11 @@ public interface BLFacade {
 	 * @return collection of events
 	 */
 	@WebMethod
-	public Vector<Event> getEvents(Date date);
+	public ArrayList<Event> getEvents(Date date);
 
-	public Vector<Event> getAllEvents();
+	public ArrayList<Event> getAllEvents();
 
-	public Vector<Question> getAllQuestions();
+	public ArrayList<Question> getAllQuestions();
 
 	public boolean deleteEvent(Event evento);
 
@@ -62,7 +62,7 @@ public interface BLFacade {
 	 * @return collection of dates
 	 */
 	@WebMethod
-	public Vector<Date> getEventsMonth(Date date);
+	public ArrayList<Date> getEventsMonth(Date date);
 
 	/**
 	 * This method calls the data access to initialize the database with some events
@@ -92,9 +92,9 @@ public interface BLFacade {
 
 	public boolean insertForecast(Question question, String forecast, float fee);
 
-	public Vector<Forecast> getForecasts();
+	public ArrayList<Forecast> getForecasts();
 
-	public Vector<Forecast> getForecasts(Question pregunta);
+	public ArrayList<Forecast> getForecasts(Question pregunta);
 
 	public boolean editarPerfilUsuario(String pContraseña, String pUsername, String pNombre, String pApellido,
 			String pEmail, String pCuentaBancaria);
@@ -102,7 +102,7 @@ public interface BLFacade {
 	public boolean editarPerfilUsuarioSinPass(String pUsername, String pNombre, String pApellido, String pEmail,
 			String pCuentaBancaria);
 
-	public Vector<User> getAllUsers();
+	public ArrayList<User> getAllUsers();
 
 	public Integer getMaxIdInDB();
 

@@ -1,5 +1,6 @@
 package businessLogic;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 //hola
 import java.util.Date;
@@ -29,13 +30,13 @@ import exceptions.UserAlreadyExistException;
 @WebService(endpointInterface = "businessLogic.BLFacade")
 public class BLFacadeImplementation implements BLFacade {
 	DataAccess dbManager;
-
+	String ini = "initialize";
 	public BLFacadeImplementation() {
 		System.out.println("Creating BLFacadeImplementation instance");
 		ConfigXML c = ConfigXML.getInstance();
 
-		if (c.getDataBaseOpenMode().equals("initialize")) {
-			dbManager = new DataAccess(c.getDataBaseOpenMode().equals("initialize"));
+		if (c.getDataBaseOpenMode().equals(ini)) {
+			dbManager = new DataAccess(c.getDataBaseOpenMode().equals(ini));
 			dbManager.initializeDB();
 			dbManager.close();
 		}
@@ -47,7 +48,7 @@ public class BLFacadeImplementation implements BLFacade {
 		System.out.println("Creating BLFacadeImplementation instance with DataAccess parameter");
 		ConfigXML c = ConfigXML.getInstance();
 
-		if (c.getDataBaseOpenMode().equals("initialize")) {
+		if (c.getDataBaseOpenMode().equals(ini)) {
 			da.open(true);
 			da.initializeDB();
 			da.close();
@@ -88,9 +89,9 @@ public class BLFacadeImplementation implements BLFacade {
 	};
 
 	@Override
-	public Vector<Question> getAllQuestions() {
+	public ArrayList<Question> getAllQuestions() {
 		dbManager.open(false);
-		Vector<Question> questions = dbManager.getAllQuestions();
+		ArrayList<Question> questions = dbManager.getAllQuestions();
 		dbManager.close();
 		return questions;
 	}
@@ -111,9 +112,9 @@ public class BLFacadeImplementation implements BLFacade {
 	 */
 	@Override
 	@WebMethod
-	public Vector<Event> getEvents(Date date) {
+	public ArrayList<Event> getEvents(Date date) {
 		dbManager.open(false);
-		Vector<Event> events = dbManager.getEvents(date);
+		ArrayList<Event> events = dbManager.getEvents(date);
 		dbManager.close();
 		return events;
 	}
@@ -126,9 +127,9 @@ public class BLFacadeImplementation implements BLFacade {
 	 */
 	@Override
 	@WebMethod
-	public Vector<Event> getAllEvents() {
+	public ArrayList<Event> getAllEvents() {
 		dbManager.open(false);
-		Vector<Event> events = dbManager.getAllEvents();
+		ArrayList<Event> events = dbManager.getAllEvents();
 		dbManager.close();
 		return events;
 	}
@@ -142,9 +143,9 @@ public class BLFacadeImplementation implements BLFacade {
 	 */
 	@Override
 	@WebMethod
-	public Vector<Date> getEventsMonth(Date date) {
+	public ArrayList<Date> getEventsMonth(Date date) {
 		dbManager.open(false);
-		Vector<Date> dates = dbManager.getEventsMonth(date);
+		ArrayList<Date> dates = dbManager.getEventsMonth(date);
 		dbManager.close();
 		return dates;
 	}
@@ -248,17 +249,17 @@ public class BLFacadeImplementation implements BLFacade {
 	}
 
 	@Override
-	public Vector<Forecast> getForecasts() {
+	public ArrayList<Forecast> getForecasts() {
 		dbManager.open(false);
-		Vector<Forecast> result = dbManager.getForecasts();
+		ArrayList<Forecast> result = dbManager.getForecasts();
 		dbManager.close();
 		return result;
 	}
 
 	@Override
-	public Vector<Forecast> getForecasts(Question pregunta) {
+	public ArrayList<Forecast> getForecasts(Question pregunta) {
 		dbManager.open(false);
-		Vector<Forecast> result = dbManager.getForecasts(pregunta);
+		ArrayList<Forecast> result = dbManager.getForecasts(pregunta);
 		dbManager.close();
 		return result;
 	}
@@ -291,11 +292,11 @@ public class BLFacadeImplementation implements BLFacade {
 	}
 
 	@Override
-	public Vector<User> getAllUsers() {
+	public ArrayList<User> getAllUsers() {
 
 		dbManager.open(false);
 
-		Vector<User> users = dbManager.getAllUsers();
+		ArrayList<User> users = dbManager.getAllUsers();
 		dbManager.close();
 		return users;
 
