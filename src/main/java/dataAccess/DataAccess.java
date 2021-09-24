@@ -530,7 +530,7 @@ public class DataAccess {
 		return maxid;
 	}
 
-	public int crearApuesta(RegularUser u, Forecast f, Bet b) {
+	public int createBet(RegularUser u, Forecast f, Bet b) {
 
 		System.out.println(">> DataAccess: crearApuesta=> bet= " + f.getForecast() + " amount=" + b.getAmount());
 

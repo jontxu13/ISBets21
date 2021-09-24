@@ -348,7 +348,7 @@ public class BLFacadeImplementation implements BLFacade {
 	@Override
 	public int crearApuesta(RegularUser u, Forecast f, Bet b) {
 		dbManager.open(false);
-		int inserted = dbManager.crearApuesta(u, f, b);
+		int inserted = dbManager.createBet(u, f, b);
 		return inserted;
 	}
 
