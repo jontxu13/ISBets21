@@ -535,7 +535,7 @@ public class DataAccess {
 		System.out.println(">> DataAccess: crearApuesta=> bet= " + f.getForecast() + " amount=" + b.getAmount());
 
 		if (b.getAmount() < 0) {
-			return 1; // 1 --> El usuario no puede apostar valores negativos, ovbio
+			return 1; // 1 --> El usuario no puede apostar valores negativos, obvio
 		} else {
 
 			if (b.getAmount() < b.getForecast().getQuestion().getBetMinimum()) {
