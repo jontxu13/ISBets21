@@ -33,7 +33,7 @@ import exceptions.UserAlreadyExistException;
 import exceptions.UserDoesNotExistException;
 
 /**
- * It implements the data access to the objectDb database
+ * It implements the data access to the objectDb database 
  */
 public class DataAccess {
 	protected static EntityManager db;
