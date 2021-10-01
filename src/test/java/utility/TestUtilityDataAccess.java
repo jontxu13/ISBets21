@@ -1,6 +1,7 @@
 package utility;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -100,6 +101,20 @@ public class TestUtilityDataAccess {
 			Event ev = db.find(Event.class, event.getEventNumber());
 			return ev.DoesQuestionExists(question);
 			
+		}
+		
+		public boolean existEvent(Event event) {
+			System.out.println(">> DataAccess: existEvent=> event= " + event);
+
+			Vector<Event> eventosmismodia = getEvents(event.getEventDate());
+
+			for (Event e : eventosmismodia) {
+				if (e.getDescription().equals(event.getDescription())) {
+					return true;
+				}
+			}
+
+			return false;
 		}
 }
 

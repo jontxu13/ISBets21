@@ -41,7 +41,7 @@ class CreateQuestionBLTest {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate = sdf.parse("05/10/2022");
 			String queryText = "Query Text";
-			Float betMinimum = 2f;
+			float betMinimum = 2;
 
 			ev = testBL.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
 

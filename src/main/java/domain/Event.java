@@ -18,16 +18,16 @@ public class Event implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@XmlID @Id
+	@XmlID
 	@XmlJavaTypeAdapter(IntegerAdapter.class)
+	@Id @GeneratedValue
 	private Integer eventNumber;
 	private String description; 
 	private Date eventDate;
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private Vector<Question> questions=new Vector<Question>();
+	private boolean closed = false;
 
-	private boolean closed;
-	
 	public Vector<Question> getQuestions() {
 		return questions;
 	}
@@ -36,18 +36,19 @@ public class Event implements Serializable {
 		this.questions = questions;
 	}
 
+	public Event() {
+		super();
+	}
 
 	public Event(Integer eventNumber, String description,Date eventDate) {
 		this.eventNumber = eventNumber;
 		this.description = description;
 		this.eventDate=eventDate;
-		this.closed=false;
 	}
 	
-	public Event(String description,Date eventDate) {
+	public Event( String description,Date eventDate) {
 		this.description = description;
 		this.eventDate=eventDate;
-		this.closed=false;
 	}
 
 	public Integer getEventNumber() {
@@ -74,9 +75,16 @@ public class Event implements Serializable {
 		this.eventDate = eventDate;
 	}
 	
+	public void setClosed(boolean b) {
+		this.closed=b;
+	}
+	
+	public boolean getClosed() {
+		return closed;
+	}
 	
 	public String toString(){
-		return eventNumber+"; "+description;
+		return eventNumber+";"+description;
 	}
 	
 	/**
@@ -116,14 +124,6 @@ public class Event implements Serializable {
 		result = prime * result + eventNumber;
 		return result;
 	}
-	
-	public void setClosed(boolean b) {
-		this.closed=b;
-	}
-	
-	public boolean getClosed() {
-		return closed;
-	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -138,5 +138,9 @@ public class Event implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
+	
+	
 
 }

@@ -107,7 +107,7 @@ public class ConfigXML {
 
 			// Two possible values: "open" or "initialize"
 			// dataBaseOpenMode= getTagValue("dataBaseOpenMode", config);
-			dataBaseOpenMode = "open";
+			dataBaseOpenMode = "initialize";
 
 			databaseNode = getTagValue("databaseNode", config);
 

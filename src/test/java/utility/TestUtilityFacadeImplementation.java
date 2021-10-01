@@ -47,5 +47,13 @@ public class TestUtilityFacadeImplementation {
 			dbManagerTest.close();
 			return events;
 		}
+		
+		
+		public boolean existEvent(Event event) {
+			dbManagerTest.open();
+			boolean result = dbManagerTest.existEvent(event);
+			dbManagerTest.close();
+			return result;
+		}
 
 }
