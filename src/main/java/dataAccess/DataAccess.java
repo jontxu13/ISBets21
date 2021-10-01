@@ -183,6 +183,8 @@ public class DataAccess {
 	public Question createQuestion(Event event, String question, float betMinimum) throws QuestionAlreadyExist {
 		System.out.println(">> DataAccess: createQuestion=> event= " + event + " question= " + question + " betMinimum="
 				+ betMinimum);
+		
+		if (event == null || question == null) return null;
 
 		Event ev = db.find(Event.class, event.getEventNumber());
 

@@ -152,6 +152,7 @@ class CreateQuestionDATest {
 				// verify the results returned
 				assertNull(q);
 				
+				testDA.open();
 				// verify DB
 				Vector<Event> es = testDA.getEvents(oneDate);
 				testDA.close();
