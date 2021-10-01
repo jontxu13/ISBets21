@@ -41,7 +41,7 @@ class CreateQuestionBLMockTest {
 			try {
 				// configure Mock
 				Mockito.doReturn(oneDate).when(mockedEvent).getEventDate();
-				Mockito.when(dataAccess.createQuestion(Mockito.any(Event.class), Mockito.any(String.class),	Mockito.any(float.class))).thenThrow(QuestionAlreadyExist.class);
+				Mockito.when(dataAccess.createQuestion(Mockito.any(Event.class), Mockito.any(String.class),	Mockito.any(Float.class))).thenThrow(QuestionAlreadyExist.class);
 
 				// invoke System Under Test (sut)
 				String queryText = "Query Text";
