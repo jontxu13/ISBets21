@@ -534,7 +534,7 @@ public class DataAccess {
 
 	public int createBet(RegularUser u, Forecast f, Bet b) {
 
-		System.out.println(">> DataAccess: crearApuesta=> bet= " + f.getForecast() + " amount=" + b.getAmount());
+		System.out.println(">> DataAccess: crearApuesta=> bet= " + f.getForecast() + " amount=" + b.getAmount() + "user=" + u.getUserName());
 
 		if (b.getAmount() < 0) {
 			return 1; // 1 --> El usuario no puede apostar valores negativos, obvio
@@ -807,5 +807,17 @@ public class DataAccess {
 		Bet apuesta = new Bet(pronostico, usuario, 13);
 
 	}
+	
+	public boolean removeEvent(Event ev) {
+		System.out.println(">> DataAccessTest: removeEvent");
+		Event e = db.find(Event.class, ev.getEventNumber());
+		if (e!=null) {
+			db.getTransaction().begin();
+			db.remove(e);
+			db.getTransaction().commit();
+			return true;
+		} else 
+		return false;
+    }
 
 }

@@ -309,7 +309,7 @@ public class CreateBetGUI extends JFrame {
 							JOptionPane.ERROR_MESSAGE);
 				} else {
 					Bet be = new Bet(f, userlog, betP);
-					int inserted = facade.crearApuesta((RegularUser) userlog, bet, be);
+					int inserted = facade.createBet((RegularUser) userlog, bet, be);
 					if (inserted == 4) {
 						JOptionPane.showMessageDialog(getContentPane(), "Bet done correctly");
 						textBet.setText(String.valueOf(que.getBetMinimum()));

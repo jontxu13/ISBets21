@@ -114,7 +114,7 @@ public interface BLFacade {
 
 	public AdminUser getAdminUserByUsername(String pusername);
 
-	public int crearApuesta(RegularUser u, Forecast f, Bet b);
+	public int createBet(RegularUser u, Forecast f, Bet b);
 	
 	public boolean closeEvent(Event e, Question q, Forecast f);
 	public boolean anularApuesta(Bet pApuesta);

@@ -15,7 +15,7 @@ public class RegularUser extends User {
 	private String email;
 	private String bankAccount;
 	private Integer phoneNumb;
-	private CreditCard creditCard;
+	//private CreditCard creditCard;
 	private String address;
 	private float saldo;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
@@ -79,13 +79,13 @@ public class RegularUser extends User {
 	public void setBalance(float balance) {
 		this.saldo = balance;
 	}
-	public CreditCard getCreditCard() {
-		return creditCard;
-	}
-
-	public void setCreditCard(CreditCard c) {
-		this.creditCard = c;
-	}
+//	public CreditCard getCreditCard() {
+//		return creditCard;
+//	}
+//
+//	public void setCreditCard(CreditCard c) {
+//		this.creditCard = c;
+//	}
 	
 	@Override
 	public String toString() {
