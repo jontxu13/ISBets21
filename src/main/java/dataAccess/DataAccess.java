@@ -99,10 +99,10 @@ public class DataAccess {
 //			Event ev19 = new Event(19, "Real Sociedad-Levante", UtilDate.newDate(year, month + 1, 28));
 //			Event ev20 = new Event(20, "Betis-Real Madrid", UtilDate.newDate(year, month + 1, 28));
 //
-//			User useradmin = new AdminUser(adm, adm, "Pepe", "Lopez");
-//			User usuario = new RegularUser("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 0);
-//			db.persist(usuario);
-//			db.persist(useradmin);
+			User useradmin = new AdminUser(adm, adm, "Pepe", "Lopez");
+			User usuario = new RegularUser("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 0);
+			db.persist(usuario);
+			db.persist(useradmin);
 //			Question q1;
 //			Question q2;
 //			Question q3;
@@ -532,7 +532,7 @@ public class DataAccess {
 		return maxid;
 	}
 
-	public int createBet(RegularUser u, Forecast f, Bet b) {
+	public int createBet(User u, Forecast f, Bet b) {
 
 		System.out.println(">> DataAccess: crearApuesta=> bet= " + f.getForecast() + " amount=" + b.getAmount() + "user=" + u.getUserName());
 
@@ -546,7 +546,7 @@ public class DataAccess {
 			} else {
 				RegularUser us = db.find(RegularUser.class, u.getUserName());
 
-				if (b.getAmount() > u.getBalance()) {
+				if (b.getAmount() > us.getBalance()) {
 					return 3; // 3 --> El usuario no cuenta con el suficiente dinero en su cuenta para apostarr
 
 				} else {
@@ -554,7 +554,7 @@ public class DataAccess {
 					try {
 						db.getTransaction().begin();
 						Forecast fe = db.find(Forecast.class, f);
-						fe.addBet(f, u, b.getAmount());
+						fe.addBet(f, (RegularUser) u, b.getAmount());
 						us.addBet(b);
 						us.setBalance(us.getBalance() - b.getAmount());
 						db.persist(us);
@@ -807,17 +807,5 @@ public class DataAccess {
 		Bet apuesta = new Bet(pronostico, usuario, 13);
 
 	}
-	
-	public boolean removeEvent(Event ev) {
-		System.out.println(">> DataAccessTest: removeEvent");
-		Event e = db.find(Event.class, ev.getEventNumber());
-		if (e!=null) {
-			db.getTransaction().begin();
-			db.remove(e);
-			db.getTransaction().commit();
-			return true;
-		} else 
-		return false;
-    }
 
 }
