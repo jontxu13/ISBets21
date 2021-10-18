@@ -130,7 +130,7 @@ class CreateBetBLMockTest {
 			
 			Mockito.doReturn(u).when(dataAccess).registrar("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 0);
 			Mockito.when(dataAccess.createBet(u, f, b)).thenReturn(5);
-			sut.registrar("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 0);
+			sut.registrar("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 0); 	
 			int obtained = sut.createBet(u, f, b);
 			
 						
