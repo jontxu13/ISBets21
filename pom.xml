@@ -60,6 +60,7 @@
 		<sonar.login>45b2e4da2944118ce9bdd407716d5fa90f46038a</sonar.login>
 	</properties>
 
+
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
 	<dependencies>
 		<dependency>
