@@ -304,6 +304,10 @@ public class DataAccessDaSilva2 {
 
 		System.out.println(">> DataAccess: crearApuesta=> bet= " + f.getForecast() + " amount=" + b.getAmount() + "user=" + u.getUserName());
 
+		if (f ==null | b == null) {
+			return 5;
+		}
+		
 		if (b.getAmount() < 0) {
 			return 1; // 1 --> El usuario no puede apostar valores negativos, obvio
 		} else {
@@ -313,6 +317,9 @@ public class DataAccessDaSilva2 {
 				// asociada a la pregunta
 			} else {
 				User us = db.find(User.class, u.getUserName());
+				if (us == null){
+					return 5;
+				}
 
 				if (b.getAmount() > ((RegularUser)u).getBalance()) {
 					return 3; // 3 --> El usuario no cuenta con el suficiente dinero en su cuenta para apostarr
@@ -322,6 +329,9 @@ public class DataAccessDaSilva2 {
 					try {
 						db.getTransaction().begin();
 						Forecast fe = db.find(Forecast.class, f);
+						if (fe == null) {
+							return 5;
+						}
 						fe.addBet(f, (RegularUser) u, b.getAmount());
 						((RegularUser) us).addBet(b);
 						((RegularUser) us).setBalance(((RegularUser) us).getBalance() - b.getAmount());

@@ -545,8 +545,10 @@ public class DataAccess {
 				// asociada a la pregunta
 			} else {
 				RegularUser us = db.find(RegularUser.class, u.getUserName());
-
-				if (b.getAmount() > us.getBalance()) {
+				if (us == null){
+					return 5;
+				}
+				if (b.getAmount() > ((RegularUser)u).getBalance()) {
 					return 3; // 3 --> El usuario no cuenta con el suficiente dinero en su cuenta para apostarr
 
 				} else {

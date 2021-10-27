@@ -190,7 +190,7 @@ class CreateBetDATest {
 			int obtained = sut.createBet((RegularUser) u, f, b);
 
 
-			assertEquals(4, obtained);
+			assertEquals(5, obtained);
 
 		} catch (Exception e) {
 			fail("Error");
