@@ -4,8 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Bets21</groupId>
 	<artifactId>Bets21</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-
+    <version>1</version>
 	<build>
 		<plugins>
 			<plugin>
@@ -38,15 +37,7 @@
 				<version>2.19.1</version>
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
-					<include>*Test.java</include>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.junit.platform</groupId>
-						<artifactId>junit-platform-surefire-provider</artifactId>
-						<version>1.0.0</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 
 		</plugins>
@@ -64,9 +55,7 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<sonar.organization>jontxu13</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.login>45b2e4da2944118ce9bdd407716d5fa90f46038a</sonar.login>
 	</properties>
-
 
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
 	<dependencies>
