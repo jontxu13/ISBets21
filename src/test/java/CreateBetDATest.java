@@ -23,12 +23,12 @@ class CreateBetDATest {
 	static DataAccess testDA = new DataAccess(ConfigXML.getInstance().getDataBaseOpenMode().equals("initialize"));
 	private Event ev;
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-		testDA.open(false);
-		testDA.registrar("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 100);
-		testDA.close();
-	}
+//	@BeforeAll
+//	static void setUpBeforeClass() throws Exception {
+//		testDA.open(false);
+//		testDA.registrar("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 100);
+//		testDA.close();
+//	}
 	@Test
 	@DisplayName("Bet negative value")
 	void test1() {

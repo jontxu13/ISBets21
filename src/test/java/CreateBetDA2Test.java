@@ -157,7 +157,7 @@ class CreateBetDA2Test {
 			int obtained = sut.createBet((RegularUser) u, f, b);
 			testDA.close();
 
-			assertEquals(4, obtained);
+			assertEquals(5, obtained);
 
 		} catch (Exception e) {
 			fail("Error");
