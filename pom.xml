@@ -37,6 +37,9 @@
 				<version>2.22.0</version>
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
+					<includes>
+						<include>*Test.java</include>
+					</includes>
 				</configuration>
 				<dependencies>
 					<dependency>
