@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Bets21</groupId>
 	<artifactId>Bets21</artifactId>
-    <version>1</version>
+	<version>1</version>
 	<build>
 		<plugins>
 			<plugin>
@@ -38,6 +38,13 @@
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>1.0.0</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 
 		</plugins>
