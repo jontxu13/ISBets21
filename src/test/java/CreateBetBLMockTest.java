@@ -30,7 +30,7 @@ class CreateBetBLMockTest {
 	void test1() {
 		try {
 			RegularUser u = new RegularUser("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 0);
-			Question q = new Question("q", 2, mockedEvent);
+			Question q = new Question("Query Text", 2, mockedEvent);
 			Forecast f = new Forecast("f", 1, q);
 			Bet b = new Bet(f, u, -2); 
 			
@@ -53,7 +53,7 @@ class CreateBetBLMockTest {
 	void test2() {
 		try {
 			RegularUser u = new RegularUser("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 0);
-			Question q = new Question("q", 2, mockedEvent);
+			Question q = new Question("Query Text", 2, mockedEvent);
 			Forecast f = new Forecast("f", 1, q);
 			Bet b = new Bet(f, u, 1);
 			
@@ -76,7 +76,7 @@ class CreateBetBLMockTest {
 	void test3() {
 		try {
 			RegularUser u = new RegularUser("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 0);
-			Question q = new Question("q", 2, mockedEvent);
+			Question q = new Question("Query Text", 2, mockedEvent);
 			Forecast f = new Forecast("f", 1, q);
 			Bet b = new Bet(f, u, 4);
 			
@@ -100,7 +100,7 @@ class CreateBetBLMockTest {
 	void test4() {
 		try {
 			RegularUser u = new RegularUser("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 10);
-			Question q = new Question("q", 2, mockedEvent);
+			Question q = new Question("Query Text", 2, mockedEvent);
 			Forecast f = new Forecast("f", 1, q);
 			Bet b = new Bet(f, u, 4); 
 			
@@ -124,7 +124,7 @@ class CreateBetBLMockTest {
 	void test5() {
 		try {
 			RegularUser u = new RegularUser("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 10);
-			Question q = new Question("q", 2, mockedEvent);
+			Question q = new Question("Query Text", 2, mockedEvent);
 			Forecast f = new Forecast("f", 1, q);
 			Bet b = new Bet(f, u, 4); 
 			

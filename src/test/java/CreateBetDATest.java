@@ -41,7 +41,7 @@ class CreateBetDATest {
 			ev = e;
 			testDA.open(false);
 			testDA.insertEvent(e);
-			Question q = testDA.createQuestion(e, "q", 2);
+			Question q = testDA.createQuestion(e, "Query Text", 2);
 			Forecast f = new Forecast("f", 1, q);
 			testDA.insertForecast(q, "f", 1);
 			testDA.close();
@@ -76,7 +76,7 @@ class CreateBetDATest {
 			
 			testDA.open(false);
 			testDA.insertEvent(e);
-			Question q = testDA.createQuestion(e, "q", 2);
+			Question q = testDA.createQuestion(e, "Query Text", 2);
 			Forecast f = new Forecast("f", 1, q);
 			testDA.insertForecast(q, "f", 1);
 			testDA.close();
@@ -102,7 +102,7 @@ class CreateBetDATest {
 	@DisplayName("User not enougth money")
 	void test3() {
 		try {
-			User u = new RegularUser("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 100);
+			User u = new RegularUser("usuario", "Usuario1?", "Usuario", "Apellido", "01/01/1997", "usuario@gmail.com", "ES11 1111 1111 1111", 123456789, "", 1);
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate = sdf.parse("05/10/2022");
 			String eventText = "Event Text 3";
@@ -111,16 +111,17 @@ class CreateBetDATest {
 			
 			testDA.open(false);
 			testDA.insertEvent(e);
-			Question q = testDA.createQuestion(e, "q", 2);
+			Question q = testDA.createQuestion(e, "Query Text", 2);
 			Forecast f = new Forecast("f", 1, q);
 			testDA.insertForecast(q, "f", 1);
-			testDA.close();
+			
 
 			Bet b = new Bet(f, u, 11);
 
 			int obtained = sut.createBet((RegularUser) u, f, b);
 
-
+			testDA.close();
+			
 			assertEquals(3, obtained);
 
 		} catch (Exception e) {
@@ -146,17 +147,17 @@ class CreateBetDATest {
 			
 			testDA.open(false);
 			testDA.insertEvent(e);
-			Question q = testDA.createQuestion(e, "q", 2);
+			Question q = testDA.createQuestion(e, "Query Text", 2);
 			Forecast f = new Forecast("f", 1, q);
 			testDA.insertForecast(q, "f", 1);
-			testDA.close();
+			
 
 			Bet b = new Bet(f, u, 2);
 
 			int obtained = sut.createBet((RegularUser) u, f, b);
+			testDA.close();
 
-
-			assertEquals(4, obtained);
+			assertEquals(5, obtained);
 
 		} catch (Exception e) {
 			fail("Error");
@@ -181,7 +182,7 @@ class CreateBetDATest {
 			
 			testDA.open(false);
 			testDA.insertEvent(e);
-			Question q = testDA.createQuestion(e, "q", 2);
+			Question q = testDA.createQuestion(e, "Query Text", 2);
 			Forecast f = new Forecast("f", 1, q);
 			testDA.close();
 

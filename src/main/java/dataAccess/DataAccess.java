@@ -534,6 +534,7 @@ public class DataAccess {
 
 	public int createBet(User u, Forecast f, Bet b) {
 
+		User us;
 		System.out.println(">> DataAccess: crearApuesta=> bet= " + f.getForecast() + " amount=" + b.getAmount() + "user=" + u.getUserName());
 
 		if (b.getAmount() < 0) {
@@ -544,8 +545,10 @@ public class DataAccess {
 				return 2; // 2 -- > El usuario ha de apostar valores que sean almenos la cantidad mínima
 				// asociada a la pregunta
 			} else {
-				RegularUser us = db.find(RegularUser.class, u.getUserName());
-				if (us == null){
+				try {
+				us = db.find(User.class, u.getUserName());
+				} catch (Exception e) {
+					e.printStackTrace();
 					return 5;
 				}
 				if (b.getAmount() > ((RegularUser)u).getBalance()) {
@@ -557,8 +560,8 @@ public class DataAccess {
 						db.getTransaction().begin();
 						Forecast fe = db.find(Forecast.class, f);
 						fe.addBet(f, (RegularUser) u, b.getAmount());
-						us.addBet(b);
-						us.setBalance(us.getBalance() - b.getAmount());
+						((RegularUser) us).addBet(b);
+						((RegularUser) us).setBalance(((RegularUser) us).getBalance() - b.getAmount());
 						db.persist(us);
 						db.getTransaction().commit();
 						return 4;

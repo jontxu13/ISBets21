@@ -41,7 +41,7 @@ class CreateBetDA2Test {
 			ev = e;
 			testDA.open(false);
 			testDA.insertEvent(e);
-			Question q = testDA.createQuestion(e, "q", 2);
+			Question q = testDA.createQuestion(e, "Query Text", 2);
 			Forecast f = new Forecast("f", 1, q);
 			testDA.insertForecast(q, "f", 1);
 			testDA.close();
@@ -76,7 +76,7 @@ class CreateBetDA2Test {
 			
 			testDA.open(false);
 			testDA.insertEvent(e);
-			Question q = testDA.createQuestion(e, "q", 2);
+			Question q = testDA.createQuestion(e, "Query Text", 2);
 			Forecast f = new Forecast("f", 1, q);
 			testDA.insertForecast(q, "f", 1);
 			testDA.close();
@@ -111,7 +111,7 @@ class CreateBetDA2Test {
 			
 			testDA.open(false);
 			testDA.insertEvent(e);
-			Question q = testDA.createQuestion(e, "q", 2);
+			Question q = testDA.createQuestion(e, "Query Text", 2);
 			Forecast f = new Forecast("f", 1, q);
 			testDA.insertForecast(q, "f", 1);
 			
@@ -147,7 +147,7 @@ class CreateBetDA2Test {
 			
 			testDA.open(false);
 			testDA.insertEvent(e);
-			Question q = testDA.createQuestion(e, "q", 2);
+			Question q = testDA.createQuestion(e, "Query Text", 2);
 			Forecast f = new Forecast("f", 1, q);
 			testDA.insertForecast(q, "f", 1);
 			
@@ -182,7 +182,7 @@ class CreateBetDA2Test {
 			
 			testDA.open(false);
 			testDA.insertEvent(e);
-			Question q = testDA.createQuestion(e, "q", 2);
+			Question q = testDA.createQuestion(e, "Query Text", 2);
 			Forecast f = new Forecast("f", 1, q);
 			testDA.close();
 

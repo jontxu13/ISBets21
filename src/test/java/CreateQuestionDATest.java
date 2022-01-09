@@ -1,4 +1,5 @@
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -157,7 +158,7 @@ class CreateQuestionDATest {
 				Vector<Event> es = testDA.getEvents(oneDate);
 				testDA.close();
 
-				assertTrue(es.contains(ev));
+				assertFalse(es.contains(ev));
 
 			} catch (QuestionAlreadyExist e) {
 				// if the program goes to this point fail
@@ -183,7 +184,7 @@ class CreateQuestionDATest {
 			// configure the state of the system (create object in the dabatase)
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate = sdf.parse("05/10/2022");
-			String eventText = "Event Text";
+			String eventText = "Event Text 5";
 			Float betMinimum = -2f;
 			
 			testDA.open();
@@ -203,7 +204,8 @@ class CreateQuestionDATest {
 				// verify DB
 				testDA.open();
 				Vector<Event> es = testDA.getEvents(oneDate);
-				testDA.close();				assertEquals(1, es.size());
+				testDA.close();				
+				assertEquals(1, es.size());
 				assertEquals(eventText, es.get(0).getDescription());
 				assertEquals(oneDate, es.get(0).getEventDate());
 

@@ -301,13 +301,9 @@ public class DataAccessDaSilva2 {
 	}
 	
 	public int createBet(User u, Forecast f, Bet b) {
-
+		User us;
 		System.out.println(">> DataAccess: crearApuesta=> bet= " + f.getForecast() + " amount=" + b.getAmount() + "user=" + u.getUserName());
 
-		if (f ==null | b == null) {
-			return 5;
-		}
-		
 		if (b.getAmount() < 0) {
 			return 1; // 1 --> El usuario no puede apostar valores negativos, obvio
 		} else {
@@ -316,11 +312,12 @@ public class DataAccessDaSilva2 {
 				return 2; // 2 -- > El usuario ha de apostar valores que sean almenos la cantidad mínima
 				// asociada a la pregunta
 			} else {
-				User us = db.find(User.class, u.getUserName());
-				if (us == null){
+				try {
+				us = db.find(User.class, u.getUserName());
+				} catch (Exception e) {
+					e.printStackTrace();
 					return 5;
 				}
-
 				if (b.getAmount() > ((RegularUser)u).getBalance()) {
 					return 3; // 3 --> El usuario no cuenta con el suficiente dinero en su cuenta para apostarr
 
