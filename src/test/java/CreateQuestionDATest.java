@@ -1,5 +1,5 @@
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -157,7 +157,7 @@ class CreateQuestionDATest {
 				Vector<Event> es = testDA.getEvents(oneDate);
 				testDA.close();
 
-				assertFalse(es.contains(ev));
+				assertTrue(es.contains(ev));
 
 			} catch (QuestionAlreadyExist e) {
 				// if the program goes to this point fail
